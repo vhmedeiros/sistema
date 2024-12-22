@@ -29,6 +29,14 @@ class ErpContratoForm(forms.ModelForm):
                 'cols': 20,
                 'placeholder': 'Informações adicionais'
             }),
+            'tipo_prorrogacao': forms.Select(choices=[  # Corrigido de 'choises' para 'choices'
+                ('ANO', 'Anual'),
+                ('MES', 'Mensal'),
+                ('AUT', 'Automático'),
+                ('TRI', 'Trimestral'),
+                ('SEM', 'Semestral'),
+                ('NAO', 'Não Prorrogar'),
+            ]),
             'status_contrato': forms.Select(choices=[
                 ('A', 'Ativo'),
                 ('I', 'Inativo'),
@@ -44,6 +52,10 @@ class ErpContratoForm(forms.ModelForm):
                 ('C', 'Correios'),
                 ('O', 'Outro'),
             ]),
+            # 'in_contrato_assinado': forms.BooleanField(
+            #     widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            #     initial=True,  # Marca a caixa de seleção como marcada por padrão
+            # ),
         }
         labels = {  # Corrigido de 'lables' para 'labels'
             'cd_empresa': 'Empresa',

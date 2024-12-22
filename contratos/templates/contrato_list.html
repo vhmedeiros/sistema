@@ -6,29 +6,11 @@ SMI - Lista de Contratos
 
 {% block content %}
 <div class="container mt-4">
-    <h3 class="display-6">Contratos de {{ cliente.nome_cliente }}</h3>
-
-    <!-- Filtros -->
-    <form method="get" action="{% url 'contratos_por_cliente' cliente.id_cliente %}">
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label for="descricao" class="form-label">Descrição</label>
-                <input type="text" name="descricao" id="descricao" class="form-control" placeholder="Buscar contrato" value="{{ request.GET.descricao }}">
-            </div>
-            <div class="col-md-4">
-                <label for="status" class="form-label">Status</label>
-                <select name="status" id="status" class="form-select">
-                    <option value="">Todos</option>
-                    <option value="ativo" {% if request.GET.status == "ativo" %}selected{% endif %}>Ativo</option>
-                    <option value="inativo" {% if request.GET.status == "inativo" %}selected{% endif %}>Inativo</option>
-                </select>
-            </div>
-        </div>
-
+    <h3 class="display-6">Contratos - {{ cliente.nome_cliente }}</h3>
         <div class="row mb-3">
             <div class="col-md-4 d-flex align-items-end">
-                <button type="submit" class="btn btn-primary me-2">Buscar</button>
-                <a href="{% url 'contrato_create' cliente.id_cliente %}" class="btn btn-success">Novo Contrato</a>
+                <a href="{% url 'contrato_create' cliente.id_cliente %}" class="btn btn-outline-success me-2">Novo Contrato</a>
+                <a href="{% url 'cliente_detail' cliente.id_cliente %}" class="btn btn-outline-secondary me-2"><i class="bi bi-arrow-left"></i>Voltar</a>
             </div>
         </div>
     </form>
@@ -41,6 +23,7 @@ SMI - Lista de Contratos
                     <th>Ações</th>
                     <th>ID</th>
                     <th>Descrição</th>
+                    <th>Valor Mensal</th>
                     <th>Data Início</th>
                     <th>Data Fim</th>
                     <th>Status</th>
@@ -61,6 +44,7 @@ SMI - Lista de Contratos
                     </td>
                     <td>{{ contrato.id_contrato }}</td>
                     <td>{{ contrato.descricao_contrato }}</td>
+                    <td>R$ {{ contrato.valor_contrato|floatformat:2 }}</td>
                     <td>{{ contrato.data_inicio_vigencia|date:"d/m/Y" }}</td>
                     <td>{{ contrato.data_fim_vigencia|date:"d/m/Y" }}</td>
                     <td>

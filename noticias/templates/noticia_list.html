@@ -54,8 +54,8 @@ SMI - Lista de Notícias
                 </select>
             </div>
             <div class="col-md-4 d-flex align-items-end">
-                <button type="submit" class="btn btn-primary me-2">Buscar</button>
-                <a href="{% url 'noticia_create' %}" class="btn btn-success">Cadastrar Notícia</a>
+                <button type="submit" class="btn btn-outline-primary me-2">Buscar</button>
+                <a href="{% url 'noticia_create' %}" class="btn btn-outline-success">Cadastrar Notícia</a>
             </div>
         </div>
     </form>
@@ -76,10 +76,10 @@ SMI - Lista de Notícias
                 {% for noticia in noticias %}
                 <tr>
                     <td>
-                        <a href="{% url 'noticia_detail' noticia.cd_noticia%}" class="btn btn-info btn-sm" title="Visualizar">
+                        <a href="{% url 'noticia_detail' noticia.cd_noticia%}" class="btn btn-info btn-sm p-1" title="Visualizar">
                             <i class="bi bi-eye"></i>
                         </a>
-                        <a href="{% url 'noticia_update' noticia.cd_noticia %}" class="btn btn-warning btn-sm" title="Editar">
+                        <a href="{% url 'noticia_update' noticia.cd_noticia %}" class="btn btn-warning btn-sm p-1" title="Editar">
                             <i class="bi bi-pencil"></i>
                     </td>
                     <td>{{ noticia.titulo }}</td>

@@ -91,11 +91,11 @@
 
             <!-- Botões -->
             <div class="d-flex justify-content-between mt-3">
-                <a href="{% url 'noticia_list' %}" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-arrow-left"></i> Voltar para Lista
-                </a>
                 <a href="{% url 'noticia_update' object.pk %}" class="btn btn-outline-info btn-sm">
                     <i class="bi bi-pencil"></i> Editar Notícia
+                </a>
+                <a href="{% url 'noticia_list' %}" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-arrow-left"></i> Voltar para Lista
                 </a>
             </div>
         </div>

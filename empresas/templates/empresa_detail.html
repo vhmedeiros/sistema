@@ -138,11 +138,11 @@
 
             <!-- Botões -->
             <div class="d-flex justify-content-between mt-3">
-                <a href="{% url 'empresa_list' %}" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-arrow-left"></i> Voltar para Lista
-                </a>
                 <a href="{% url 'empresa_update' object.pk %}" class="btn btn-outline-info btn-sm">
                     <i class="bi bi-pencil"></i> Editar Empresa
+                </a>
+                <a href="{% url 'empresa_list' %}" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-arrow-left"></i> Voltar para Lista
                 </a>
             </div>
         </div>

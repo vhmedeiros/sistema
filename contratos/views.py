@@ -25,6 +25,12 @@ class ErpContratoDetailView(DetailView):
     model = models.ErpContrato
     template_name = 'contrato_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contrato = self.get_object() # pega o contrato
+        context['cliente'] = contrato.id_cliente # add cliente ao contexto
+        return context
+
 
 class ErpContratoCreateView(CreateView):
     model = models.ErpContrato

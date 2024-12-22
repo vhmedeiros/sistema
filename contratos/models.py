@@ -2,6 +2,16 @@
 from empresas.models import ErpEmpresa
 from clientes.models import ErpCliente
 
+TIPO_PRORROGACAO = (
+    ['ANO', 'Anual'],
+    ['MES', 'Mensal'],
+    ['AUT', 'Automático'],
+    ['TRI', 'Trimestral'],
+    ['SEM', 'Semestral'],
+    ['NAO','Não Prorrogar'],
+)
+
+
 TIPO_COBRANCA = (
     ['MES', 'Mensal'],
     ['ANO', 'Anual'],

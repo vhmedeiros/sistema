@@ -15,7 +15,7 @@ SMI - Lista de Empresas
                 <label for="nome_empresa" class="form-label">Nome da Empresa</label>
                 <input type="text" name="nome_empresa" id="nome_empresa" class="form-control" placeholder="Buscar empresa" value="{{ request.GET.nome_empresa }}">
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <label for="sg_uf" class="form-label">UF</label>
                 <select name="sg_uf" id="sg_uf" class="form-select">
                     <option value="">Todas</option>
@@ -34,13 +34,13 @@ SMI - Lista de Empresas
                     </option>
                     {% endfor %}
                 </select>
-            </div>
+            </div> -->
         </div>
 
         <div class="row mb-3">
             <div class="col-md-4 d-flex align-items-end">
-                <button type="submit" class="btn btn-primary me-2">Buscar</button>
-                <a href="{% url 'empresa_create' %}" class="btn btn-success">Cadastrar Empresa</a>
+                <button type="submit" class="btn btn-outline-primary me-2">Buscar</button>
+                <a href="{% url 'empresa_create' %}" class="btn btn-outline-success">Cadastrar Empresa</a>
             </div>
         </div>
     </form>

@@ -15,7 +15,7 @@ SMI - Veículos
             <form method="get" action="{% url 'veiculo_list' %}">
                 <div class="input-group">
                     <input type="text" class="form-control" name="nome_veiculo" placeholder="Procurar Veículos" value="{{ request.GET.nome_veiculo }}">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-outline-primary">
                         <i class="bi bi-search"></i> Buscar
                     </button>
                 </div>
@@ -24,8 +24,7 @@ SMI - Veículos
 
         <div class="col-md-6 text-end">
             <!-- Botão de Cadastro -->
-            <a href="{% url 'veiculo_create' %}" class="btn btn-success">
-                <i class="bi bi-plus"></i> Cadastrar Veículo
+            <a href="{% url 'veiculo_create' %}" class="btn btn-outline-success"> Cadastrar Veículo
             </a>
         </div>
     </div>

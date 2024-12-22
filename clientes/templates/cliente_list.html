@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-SMI - Lista de Clientes
+SMM - Lista de Clientes
 {% endblock %}
 
 {% block content %}
@@ -11,36 +11,16 @@ SMI - Lista de Clientes
     <!-- Filtros -->
     <form method="get" action="{% url 'cliente_list' %}">
         <div class="row mb-3">
-            <div class="col-md-4">
+            <div class="col-md-6 text-md-start">
                 <label for="nome_cliente" class="form-label">Nome do Cliente</label>
                 <input type="text" name="nome_cliente" id="nome_cliente" class="form-control" placeholder="Buscar cliente" value="{{ request.GET.nome_cliente }}">
-            </div>
-            <div class="col-md-4">
-                <label for="cd_uf" class="form-label">UF</label>
-                <select name="cd_uf" id="cd_uf" class="form-select">
-                    <option value="">Todas</option>
-                    {% for uf in ufs %}
-                    <option value="{{ uf }}" {% if request.GET.cd_uf == uf %}selected{% endif %}>{{ uf }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label for="id_municipio" class="form-label">Cidade</label>
-                <select name="id_municipio" id="id_municipio" class="form-select">
-                    <option value="">Todas</option>
-                    {% for cidade_id, cidade_nome in cidades %}
-                    <option value="{{ cidade_id }}" {% if request.GET.id_municipio == cidade_id|stringformat:"s" %}selected{% endif %}>
-                        {{ cidade_nome }}
-                    </option>
-                    {% endfor %}
-                </select>
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-md-4 d-flex align-items-end">
-                <button type="submit" class="btn btn-primary me-2">Buscar</button>
-                <a href="{% url 'cliente_create' %}" class="btn btn-success">Cadastrar Cliente</a>
+                <button type="submit" class="btn btn-outline-primary me-2">Buscar</button>
+                <a href="{% url 'cliente_create' %}" class="btn btn-outline-success">Cadastrar Cliente</a>
             </div>
         </div>
     </form>
@@ -62,13 +42,15 @@ SMI - Lista de Clientes
                 <tr>
                     <td>
                         <!-- Botão de Visualizar -->
-                        <a href="{% url 'cliente_detail' cliente.id_cliente %}" class="btn btn-info btn-sm" title="Visualizar">
+                        <a href="{% url 'cliente_detail' cliente.id_cliente %}" class="btn btn-info btn-sm p-1" title="Visualizar">
                             <i class="bi bi-eye"></i>
                         </a>
                         <!-- Botão de Editar -->
-                        <a href="{% url 'cliente_update' cliente.id_cliente %}" class="btn btn-warning btn-sm" title="Editar">
+                        <a href="{% url 'cliente_update' cliente.id_cliente %}" class="btn btn-warning btn-sm p-1" title="Editar">
                             <i class="bi bi-pencil"></i>
                         </a>
+                        <a href="{% url 'contrato_list' cliente.id_cliente %}" class="btn btn-secondary btn-sm p-1" title="Contrato">
+                            <i class="bi bi-file-earmark-text"></i>
                     </td>
                     <td>{{ cliente.nome_cliente }}</td>
                     <td>
