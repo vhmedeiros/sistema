@@ -1,12 +1,24 @@
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from clientes.models import ErpCliente
 from . import models, forms
 
 
-class ErpContratoListView(ListView):
+class ErpContratosPorClienteListView(ListView):
     model = models.ErpContrato
+    context_object_name = 'contratos'
     template_name = 'contrato_list.html'
+
+    def get_queryset(self):
+        id_cliente = self.kwargs['id_cliente']
+        return models.ErpContrato.objects.filter(id_cliente=id_cliente)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cliente'] = get_object_or_404(ErpCliente, id_cliente=self.kwargs['id_cliente'])
+        context['contratos'] = context['object_list']
+        return context
 
 
 class ErpContratoDetailView(DetailView):
