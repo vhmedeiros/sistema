@@ -71,3 +71,19 @@ class ErpContratoCreateView(CreateView):
     def get_success_url(self):
         # Redirecionar para a página de detalhes do contrato criado
         return reverse('contrato_detail', kwargs={'pk': self.object.pk})
+
+
+class ErpContratoUpdateView(UpdateView):
+    model = models.ErpContrato
+    form_class = forms.ErpContratoForm
+    template_name = 'contrato_update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contrato = self.get_object() # pega o contrato
+        context['cliente'] = contrato.id_cliente # add cliente ao contexto
+        return context
+
+    def get_success_url(self):
+        # Redirecionar para a página de detalhes do contrato atualizado
+        return reverse('contrato_detail', kwargs={'pk': self.object.pk})

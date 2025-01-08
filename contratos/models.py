@@ -1,29 +1,24 @@
 ﻿from django.db import models
 from empresas.models import ErpEmpresa
 from clientes.models import ErpCliente
-
-TIPO_PRORROGACAO = (
-    ['ANO', 'Anual'],
-    ['MES', 'Mensal'],
-    ['AUT', 'Automático'],
-    ['TRI', 'Trimestral'],
-    ['SEM', 'Semestral'],
-    ['NAO','Não Prorrogar'],
-)
+from veiculos.models import Veiculosistemas
 
 
-TIPO_COBRANCA = (
-    ['MES', 'Mensal'],
-    ['ANO', 'Anual'],
-    ['OUT', 'Outro'],
-)
+class ErpProduto(models.Model):
+    cd_produto = models.AutoField(primary_key=True)
+    descricao = models.CharField(max_length=100, db_collation='SQL_Latin1_General_CP850_CI_AI')
+    situacao_produto = models.BooleanField(default=True)
+    cd_produto_principal = models.ForeignKey('self', models.DO_NOTHING, db_column='cd_produto_principal', blank=True, null=True, related_name='sub_produtos')
+    veiculos = models.ManyToManyField(Veiculosistemas, related_name='produtos')
 
-ENVIO_NOTA_FISCAL = (
-    ['A', 'Email Automático'],
-    ['M', 'Email Manual'],
-    ['C', 'Correios'],
-    ['O', 'Outro'],
-)
+    class Meta:
+        managed = True
+        db_table = 'erp_produto'
+        verbose_name = 'Produto'
+        ordering = ['cd_produto']
+
+    def __str__(self):
+        return self.descricao  
 
 
 class ErpContrato(models.Model):
@@ -50,7 +45,7 @@ class ErpContrato(models.Model):
     class Meta:
         managed = False
         db_table = 'erp_contrato'
-        ordering = ['cd_empresa', 'id_cliente', 'id_contrato']
+        ordering = ['status_contrato']
         verbose_name = 'Contrato'
 
     def __str__(self):

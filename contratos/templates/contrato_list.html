@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-SMI - Lista de Contratos
+SMM - Lista de Contratos
 {% endblock %}
 
 {% block content %}
@@ -38,7 +38,7 @@ SMI - Lista de Contratos
                             <i class="bi bi-eye"></i>
                         </a>
                         <!-- Botão de Editar -->
-                        <a href="{% url 'contrato_detail' contrato.id_contrato %}" class="btn btn-warning btn-sm" title="Editar">
+                        <a href="{% url 'contrato_update' contrato.pk %}" class="btn btn-warning btn-sm" title="Editar">
                             <i class="bi bi-pencil"></i>
                         </a>
                     </td>

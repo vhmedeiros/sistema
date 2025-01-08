@@ -88,9 +88,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',  # mssql-django
         'NAME': 'bdNewsUp',
-        'USER': 'django',
-        'PASSWORD': 'django',
-        'HOST': 'localhost',
+        'USER': 'teste',
+        'PASSWORD': 'teste',
+        'HOST': '192.168.1.28',
         'PORT': '1433',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
