@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'atendimento',
     'clientes',
+    'configuracoes',
     'contratos',
     'empresas',
     'noticias',
@@ -88,9 +89,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',  # mssql-django
         'NAME': 'bdNewsUp',
-        'USER': 'teste',
-        'PASSWORD': 'teste',
-        'HOST': '192.168.1.28',
+        'USER': 'django',
+        'PASSWORD': 'django',
+        'HOST': 'localhost',
         'PORT': '1433',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',

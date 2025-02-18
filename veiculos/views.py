@@ -6,6 +6,11 @@ from unidecode import unidecode
 from . import models, forms
 
 class VeiculoListView(ListView):
+    
+    # IMPORTANTE
+    # pesquisar todos os veiculos pelo ID do veiculo
+    
+    
     model = models.Veiculosistemas
     template_name = 'veiculo_list.html'
     context_object_name = 'veiculos'

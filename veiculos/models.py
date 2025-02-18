@@ -118,6 +118,7 @@ class Veiculosistemas(models.Model):
     codtipovei = models.IntegerField(
         db_column='CodTipoVei', blank=True, null=True)
     cd_uf = models.ForeignKey(Uf, models.DO_NOTHING,
+    
                               db_column='sg_uf', blank=True, null=True)
     tipo_veiculo = models.ForeignKey(
         TipoVeiculo, models.DO_NOTHING, db_column='tp_veiculo')

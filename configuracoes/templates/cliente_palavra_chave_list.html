@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SMM - Palavras-chave do Cliente
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3 class="display-6">Palavras-chave de {{ cliente.nome_cliente }}</h3>
+
+    <div class="row">
+        <!-- Listagem de Categorias e Palavras-Chave -->
+        <div class="col-md-12">
+            {% for categoria in categorias %}
+            <div class="card mb-3">
+                <div class="card-header bg-primary text-white">
+                    <strong>{{ categoria.nome }}</strong>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for palavra in categoria.palavrachave_set.all %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ palavra.palavra }}
+                            <span class="badge bg-secondary">Cliente: {{ palavra.id_cliente.nome_cliente }}</span>
+                        </li>
+                        {% empty %}
+                        <p class="text-muted">Nenhuma palavra-chave cadastrada nesta categoria.</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">Nenhuma categoria cadastrada para este cliente.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
